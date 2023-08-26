@@ -14,6 +14,6 @@ begin
 	
 	with A(15) select 
 	SignImm (31 downto 16) <= x"0000" when '0',
-									  x"FFFF" when '1';
+									  			x"FFFF" when '1';
 
 end synth;
