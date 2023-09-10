@@ -4,12 +4,12 @@ use ieee.numeric_std.all;
 
 entity dataPath is
 	port(clk, clr: in std_logic;
-		  PC		 :	buffer std_logic_vector(31 downto 0);
-		  WriteData, ALUResult		  : buffer std_logic_vector(31 downto 0);
-		  ALUControl 					  : in std_logic_vector(3  downto 0);
-		  Instr, ReadData				  : in std_logic_vector(31 downto 0);
-		  RegDst, Jump, PCSrc		  : in std_logic;
-		  MemtoReg			  			  : in std_logic;
+		  PC		        : buffer std_logic_vector(31 downto 0);
+		  WriteData, ALUResult	: buffer std_logic_vector(31 downto 0);
+		  AluOp     		     : in std_logic_vector(3  downto 0);
+		  Instr, ReadData	     : in std_logic_vector(31 downto 0);
+		  RegDst, Jump, PCSrc	     : in std_logic;
+		  MemtoReg, MemRead	     : in std_logic;
 		  MemWrite, ALUSrc, RegWrite : in std_logic;
 		  Zero: out std_logic);		  
 end dataPath;
@@ -27,7 +27,7 @@ begin
 	port map(A1 => Instr(25 downto 21), A2 => Instr(20 downto 16), A3 => WriteReg, WD3 => Result, WE3 => RegWrite, RD1 => SrcA, RD2 => WriteData, clk => clk);
 	
 	ula: entity work.ula_mips(synth)
-	port map(A => SrcA, B => SrcB, Zero => Zero, Result => AluResult, AluOp => ALUControl);
+	port map(A => SrcA, B => SrcB, Zero => Zero, Result => AluResult, AluOp => AluOp);
 	
 	pc_reg: entity work.PC(synth)
 	port map(clk => clk, clr => clr, din => PCmuxout2, dout => PC);
