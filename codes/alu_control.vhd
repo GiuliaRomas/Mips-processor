@@ -20,6 +20,8 @@ begin
 				when "100010" => AluOp <= "0010"; -- sub
 				when "100100" => AluOp <= "0100"; -- and
 				when "100101" => AluOp <= "0101"; -- or
+                                when "100110" => AluOp <= "0110"; -- xor
+                                when "100111" => AluOp <= "0111"; -- nor
 				when "101010" => AluOp <= "1010"; -- slt
 				when  others  => AluOp <= "XXXX";
 			end case;
