@@ -33,16 +33,19 @@ architecture synth of instructionMemory is
 					temp_mem(i)(31 downto 0) := instruction(31 downto 0); 
 					
 				else -- se o arquivo acabou
+					temp_mem(i) := x"00000000";
 					next;
 				end if;
 				
 			end loop;
 			
+			file_close(arquivo);
+			
 			return temp_mem; -- retorna a matriz temporaria
 	  end;
 		
 	-- declara uma constante do tipo mem_type e inicializa com as instrucoes de um arquivo	
-	constant instruction_memory: mem_type := inicializa("instructions.txt");
+	constant instruction_memory: mem_type := inicializa("teste_fibonacci.txt");
 	
 begin
 	
