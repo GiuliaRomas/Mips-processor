@@ -18,5 +18,6 @@ begin
 		elsif rising_edge(clk) then  -- na borda de subida do clock
 			dout <= din;	     -- a saida recebe a entrada
 		end if;
+		
 	end process;
 end synth;
