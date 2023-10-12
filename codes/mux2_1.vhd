@@ -13,6 +13,6 @@ begin
 	
 	with Selector select
 	MuxOut <= A  when '0',
-				 B  when '1';
+				 B  when others;
 	
 end synth;
